@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VisionTV Store</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, Helvetica, sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#0d0d0d;
+      color:white;
+    }
+
+    /* HEADER */
+
+    header{
+      width:100%;
+      background:#111;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 8%;
+      position:fixed;
+      top:0;
+      z-index:1000;
+      border-bottom:1px solid #222;
+    }
+
+    .logo{
+      font-size:30px;
+      font-weight:bold;
+      color:#00a8ff;
+    }
+
+    nav{
+      display:flex;
+      gap:25px;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      transition:0.3s;
+      font-size:15px;
+    }
+
+    nav a:hover{
+      color:#00a8ff;
+    }
+
+    /* HERO */
+
+    .hero{
+      height:100vh;
+
+      background:
+      linear-gradient(rgba(0,0,0,0.6),
+      rgba(0,0,0,0.8)),
+      url("https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?q=80&w=1600");
+
+      background-size:cover;
+      background-position:center;
+
+      display:flex;
+      align-items:center;
+      padding:0 8%;
+    }
+
+    .hero-content{
+      max-width:650px;
+    }
+
+    .hero-content h1{
+      font-size:60px;
+      margin-bottom:20px;
+    }
+
+    .hero-content p{
+      font-size:18px;
+      color:#c7c7c7;
+      line-height:1.6;
+      margin-bottom:30px;
+    }
+
+    .hero-content button{
+      padding:15px 35px;
+      border:none;
+      border-radius:10px;
+      background:#00a8ff;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .hero-content button:hover{
+      background:#0086cc;
+      transform:scale(1.05);
+    }
+
+    /* PRODUTOS */
+
+    .products{
+      padding:120px 8% 80px;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:40px;
+      margin-bottom:60px;
+    }
+
+    .product-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+      gap:35px;
+    }
+
+    .card{
+      background:#181818;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid #222;
+      transition:0.4s;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 10px 30px rgba(0,168,255,0.2);
+    }
+
+    .card img{
+      width:100%;
+      height:240px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:25px;
+    }
+
+    .card-content h3{
+      font-size:24px;
+      margin-bottom:10px;
+    }
+
+    .card-content p{
+      color:#bdbdbd;
+      margin-bottom:20px;
+      line-height:1.5;
+    }
+
+    .price{
+      color:#00ff88;
+      font-size:30px;
+      font-weight:bold;
+      margin-bottom:20px;
+    }
+
+    .buttons{
+      display:flex;
+      gap:10px;
+    }
+
+    .buy-btn,
+    .details-btn{
+      flex:1;
+      padding:13px;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:15px;
+      transition:0.3s;
+    }
+
+    .buy-btn{
+      background:#00a8ff;
+      color:white;
+    }
+
+    .buy-btn:hover{
+      background:#0086cc;
+    }
+
+    .details-btn{
+      background:#2a2a2a;
+      color:white;
+    }
+
+    .details-btn:hover{
+      background:#3b3b3b;
+    }
+
+    /* SOBRE */
+
+    .about{
+      padding:80px 8%;
+      background:#121212;
+      text-align:center;
+    }
+
+    .about h2{
+      font-size:40px;
+      margin-bottom:20px;
+    }
+
+    .about p{
+      max-width:800px;
+      margin:auto;
+      line-height:1.7;
+      color:#bdbdbd;
+      font-size:17px;
+    }
+
+    /* CONTATO */
+
+    .contact{
+      padding:80px 8%;
+    }
+
+    .contact h2{
+      text-align:center;
+      font-size:40px;
+      margin-bottom:40px;
+    }
+
+    .contact form{
+      max-width:700px;
+      margin:auto;
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    .contact input,
+    .contact textarea{
+      padding:15px;
+      border:none;
+      border-radius:8px;
+      background:#1e1e1e;
+      color:white;
+      font-size:15px;
+    }
+
+    .contact textarea{
+      height:150px;
+      resize:none;
+    }
+
+    .contact button{
+      padding:15px;
+      border:none;
+      border-radius:8px;
+      background:#00a8ff;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .contact button:hover{
+      background:#0086cc;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#111;
+      padding:30px;
+      text-align:center;
+      color:#888;
+      border-top:1px solid #222;
+    }
+
+    /* RESPONSIVO */
+
+    @media(max-width:768px){
+
+      header{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      .hero-content h1{
+        font-size:42px;
+      }
+
+      nav{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="logo">
+      VisionTV
+    </div>
+
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+      <h1>O futuro da imagem está aqui</h1>
+
+      <p>
+        Descubra televisões premium com tecnologia 4K, OLED e QLED.
+        Qualidade cinematográfica para transformar sua experiência.
+      </p>
+
+      <button onclick="irParaProdutos()">
+        Ver Produtos
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- PRODUTOS -->
+
+  <section class="products" id="produtos">
+
+    <h2 class="section-title">
+      Produtos em Destaque
+    </h2>
+
+    <div class="product-grid">
+
+      <!-- CARD 1 -->
+
+      <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=1200" alt="Smart TV Samsung">
+
+        <div class="card-content">
+
+          <h3>Samsung Crystal 55"</h3>
+
+          <p>
+            Smart TV 4K UHD com HDR e Gaming Hub integrado.
+          </p>
+
+          <div class="price">
+            R$ 3.299
+          </div>
+
+          <div class="buttons">
+
+            <button class="buy-btn"
+            onclick="comprar('Samsung Crystal 55')">
+              Comprar
+            </button>
+
+            <button class="details-btn"
+            onclick="detalhes('Samsung Crystal 55')">
+              Detalhes
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- CARD 2 -->
+
+      <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=1200" alt="LG OLED">
+
+        <div class="card-content">
+
+          <h3>LG OLED 65"</h3>
+
+          <p>
+            Painel OLED premium com inteligência artificial.
+          </p>
+
+          <div class="price">
+            R$ 5.999
+          </div>
+
+          <div class="buttons">
+
+            <button class="buy-btn"
+            onclick="comprar('LG OLED 65')">
+              Comprar
+            </button>
+
+            <button class="details-btn"
+            onclick="detalhes('LG OLED 65')">
+              Detalhes
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- CARD 3 -->
+
+      <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=1200" alt="Philips Ambilight">
+
+        <div class="card-content">
+
+          <h3>Philips Ambilight 50"</h3>
+
+          <p>
+            Tecnologia Ambilight para máxima imersão visual.
+          </p>
+
+          <div class="price">
+            R$ 4.199
+          </div>
+
+          <div class="buttons">
+
+            <button class="buy-btn"
+            onclick="comprar('Philips Ambilight 50')">
+              Comprar
+            </button>
+
+            <button class="details-btn"
+            onclick="detalhes('Philips Ambilight 50')">
+              Detalhes
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SOBRE -->
+
+  <section class="about" id="sobre">
+
+    <h2>Sobre a VisionTV</h2>
+
+    <p>
+      Somos especialistas em televisões premium e tecnologia de entretenimento.
+      Trabalhamos com os melhores modelos do mercado para entregar qualidade,
+      desempenho e uma experiência incrível para nossos clientes.
+    </p>
+
+  </section>
+
+  <!-- CONTATO -->
+
+  <section class="contact" id="contato">
+
+    <h2>Entre em Contato</h2>
+
+    <form onsubmit="enviarFormulario(event)">
+
+      <input type="text" placeholder="Seu nome" required>
+
+      <input type="email" placeholder="Seu email" required>
+
+      <textarea placeholder="Digite sua mensagem"></textarea>
+
+      <button type="submit">
+        Enviar Mensagem
+      </button>
+
+    </form>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 VisionTV Store - Todos os direitos reservados
+  </footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    function irParaProdutos(){
+
+      document.getElementById("produtos")
+      .scrollIntoView({
+        behavior:"smooth"
+      });
+
+    }
+
+    function comprar(produto){
+
+      alert("Você escolheu comprar: " + produto);
+
+      window.open(
+        "https://www.mercadolivre.com.br/",
+        "_blank"
+      );
+
+    }
+
+    function detalhes(produto){
+
+      alert("Mais detalhes sobre: " + produto);
+
+    }
+
+    function enviarFormulario(event){
+
+      event.preventDefault();
+
+      alert("Mensagem enviada com sucesso!");
+
+    }
+
+  </script>
+
+</body>
+</html>
