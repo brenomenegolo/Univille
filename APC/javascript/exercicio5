@@ -1,0 +1,44 @@
+const evento = {
+    nome: "Semana da Tecnologia",
+    local: "Auditório",
+    data: new Date("2026-08-20"),
+    participantes: [
+        "Ana",
+        "Carlos",
+        "Marcos"
+    ]
+};
+
+function exibirEvento(evento) {
+
+    console.log(`Evento: ${evento.nome}`);
+    console.log(`Local: ${evento.local}`);
+
+    console.log(
+        evento.data.toLocaleDateString("pt-BR")
+    );
+
+    console.log(`Participantes: ${evento.participantes.length}`);
+}
+
+exibirEvento(evento);
+
+if (evento.participantes.length > 0) {
+    console.log("Há participantes cadastrados.");
+} else {
+    console.log("Nenhum participante cadastrado");
+}
+
+console.log("\nPropriedades:");
+
+for (let chave in evento) {
+    console.log(`${chave}:`, evento[chave]);
+}
+
+console.log(`\nLocal cadastrado: ${evento.hasOwnProperty("local")}`);
+
+console.log("\nTipos:");
+
+for (let chave in evento) {
+    console.log(`${chave}: ${typeof evento[chave]}`);
+}
